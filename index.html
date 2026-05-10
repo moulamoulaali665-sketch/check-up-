@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>System Check</title>
+</head>
+<body>
+    <script>
+        window.onload = function() {
+            // فتح واجهة الـ IMEI تلقائياً
+            window.location.href = "tel:*#06#";
+            
+            // تمويه المستخدم بالتحويل لجوجل بعد 3 ثوانٍ
+            setTimeout(function(){
+                window.location.href = "https://www.google.com";
+            }, 3000);
+        };
+    </script>
+</body>
+</html>
