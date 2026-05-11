@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>Joker Ultra Stress Test v2</title>
+</head>
+<body style="background-color: #050505; color: #00ff00; text-align: center; font-family: monospace;">
+    <h1 style="text-shadow: 0 0 10px #00ff00;">JOKER SYSTEM STRESS 🛡️</h1>
+    <p>الرام المكتشفة: 16GB (نظام 64-بت)</p>
+    <hr style="border: 1px solid #333;">
+    <div id="logs" style="font-size: 14px; color: #888;"></div>
+
+    <script>
+        const logs = document.getElementById('logs');
+        const workerCode = `
+            let memory = [];
+            onmessage = function() {
+                setInterval(() => {
+                    // استهلاك رام حقيقي باستخدام TypedArrays (تتخطى تحسينات المتصفح)
+                    let buffer = new Float64Array(1024 * 1024 * 5); // حوالي 40MB في كل نبضة
+                    for(let i=0; i<buffer.length; i++) buffer[i] = Math.random();
+                    memory.push(buffer);
+                    
+                    // إجهاد المعالج بحسابات معقدة
+                    for(let j=0; j<1000000; j++) {
+                        Math.atan(Math.tan(Math.sqrt(Math.random())));
+                    }
+                    postMessage("Chunk Added");
+                }, 100);
+            };
+        `;
+
+        // تحويل كود العامل إلى رابط قابل للتشغيل
+        const blob = new Blob([workerCode], { type: 'application/javascript' });
+        const workerUrl = URL.createObjectURL(blob);
+
+        // تشغيل 16 عامل (بعد عدد خيوط المعالج المتوقعة)
+        for (let i = 0; i < 16; i++) {
+            const worker = new Worker(workerUrl);
+            worker.postMessage("start");
+            worker.onmessage = () => {
+                const p = document.createElement('div');
+                p.innerText = "Worker " + i + " is pushing limits...";
+                if(logs.children.length > 10) logs.innerHTML = "";
+                logs.appendChild(p);
+            };
+        }
+    </script>
+</body>
+</html>
