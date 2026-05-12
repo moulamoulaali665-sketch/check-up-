@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stress Test Pro</title>
+    <style>
+        body { background: #1a1a1a; color: #00ff00; font-family: monospace; text-align: center; padding: 20px; }
+        .container { border: 2px solid #00ff00; padding: 20px; display: inline-block; border-radius: 10px; }
+        button { background: #f00; color: #fff; padding: 15px; border: none; cursor: pointer; font-weight: bold; }
+        #ram-val { font-size: 30px; color: #00d4ff; margin: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>RAM/CPU Stress Test</h1>
+        <div id="ram-val">0 MB</div>
+        <button onclick="runTest()">START ATTACK</button>
+    </div>
+
+    <script>
+        let memoryStore = [];
+        function runTest() {
+            // Stress RAM
+            setInterval(() => {
+                for(let i=0; i<50; i++) {
+                    let b = new Uint8Array(1024 * 1024);
+                    b.fill(1);
+                    memoryStore.push(b);
+                }
+                document.getElementById('ram-val').innerText = memoryStore.length + " MB";
+            }, 500);
+
+            // Stress CPU
+            function burn() {
+                while(true) { Math.sqrt(Math.random()); }
+            }
+            for(let j=0; j<4; j++) { setTimeout(burn, 0); }
+        }
+    </script>
+</body>
+</html>
