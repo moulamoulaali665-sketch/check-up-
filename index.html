@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ULTIMATE SYSTEM STRESS - PRO</title>
+    <style>
+        body { background: #000; color: #ff0000; font-family: 'Courier New', monospace; text-align: center; padding: 50px; }
+        .container { border: 2px solid #00ff00; padding: 20px; border-radius: 15px; display: inline-block; }
+        .warning { font-size: 25px; color: #fff; background: #f00; padding: 10px; animation: blink 0.5s infinite; }
+        button { background: #f00; color: #fff; border: none; padding: 15px 30px; font-size: 18px; cursor: pointer; border-radius: 5px; font-weight: bold; }
+        button:hover { background: #b00; }
+        #stats { margin: 20px; font-size: 24px; color: #00d4ff; }
+        #log { font-size: 14px; color: #888; height: 100px; overflow: hidden; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.2; } 100% { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="warning">⚠️ WARNING: HIGH RESOURCE CONSUMPTION ⚠️</div>
+    <h1>JOKER SYSTEM STRESS</h1>
+    <div id="stats">Status: Ready</div>
+    <div id="ram-val" style="font-size: 40px; margin-bottom: 10px;">0 MB</div>
+    <button id="startBtn" onclick="runSmartTest()">LAUNCH TOTAL DESTRUCTION</button>
+    <div id="log"></div>
+</div>
+
+<script>
+    let memoryStore = [];
+    let isRunning = false;
+
+    function log(msg) {
+        const l = document.getElementById('log');
+        l.innerHTML = msg + "<br>" + l.innerHTML;
+    }
+
+    // 1. CPU Multi-Threading Attack
+    function cpuHeavyTask() {
+        if (!isRunning) return;
+        let start = Date.now();
+        while (Date.now() - start < 100) {
+            Math.atan(Math.random()) * Math.pow(Math.random(), 5);
+        }
+        setTimeout(cpuHeavyTask, 0);
+    }
+
+    function runSmartTest() {
+        if (isRunning) return;
+        isRunning = true;
+        document.getElementById('stats').innerText = "Status: STRESSING SYSTEM...";
+        document.getElementById('startBtn').style.display = 'none';
+
+        log("Starting CPU Workers...");
+        for (let i = 0; i < 20; i++) {
+            cpuHeavyTask();
+        }
+
+        log("Starting RAM Explosion...");
+        setInterval(() => {
+            try {
+                for (let j = 0; j < 50; j++) {
+                    let buffer = new Uint
